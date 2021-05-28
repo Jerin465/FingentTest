@@ -1,0 +1,17 @@
+<div class="row p-4">
+    <div class="col-md-1">
+        <h4 class="text-muted">{{title}}</h4>
+    </div>
+    <div class="col-md-11">
+        <hr />
+    </div>
+</div>
+<div class="row">
+
+    <ng-container *ngFor="let item of data">
+        <div class="col-md-4">
+            <app-stat [count]="item.count" [label]="item.title"></app-stat>
+        </div>
+    </ng-container>
+
+</div>

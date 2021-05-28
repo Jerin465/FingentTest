@@ -1,0 +1,8 @@
+<div [@routerTransition]>
+    <h4 class="text-muted">Dashboard <small>Statistics Overview</small></h4>
+    <hr />
+    <ng-container *ngFor="let item of StatisticsData">
+        <app-list [title]="item.title" [data]="item.data"></app-list>
+    </ng-container>
+
+</div>
