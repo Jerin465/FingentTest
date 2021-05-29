@@ -14,5 +14,9 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  a(){
+      console.log("jbb");
+
+  }
 
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertMsgService } from '../shared/services';
+import { User } from '../models';
+import { AuthService } from './../shared/guard/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +17,13 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
 
-    constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {}
+    constructor(
+        private formBuilder: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+        private alertService: AlertMsgService,
+        private authService: AuthService
+    ) {}
 
     ngOnInit() {
         this.form = this.formBuilder.group({
@@ -28,19 +37,23 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
+        this.alertService.clear();
+        this.loading = true;
         this.submitted = true;
         if (this.form.invalid) {
             return;
         }
-
-        this.loading = true;
-        localStorage.setItem('isLoggedin', 'true');
-        this.router.navigateByUrl('/dashboard');
-        this.loading = false;
-
-    }
-
-    onLoggedin() {
-
+        console.log(this.form.value);
+        const data: User = this.form.value;
+        setTimeout(() => {
+            let isValid: boolean = this.authService.isValidUser(data);
+            if (isValid) {
+                localStorage.setItem('isLoggedin', 'true');
+                this.router.navigateByUrl('/dashboard');
+            } else {
+                this.alertService.error('incorrect username or password', { autoClose: true });
+            }
+            this.loading = false;
+        }, 1000);
     }
 }

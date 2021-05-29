@@ -8,7 +8,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
     public pushRightClass: string;
     public collapsed: boolean = true;
-    public isMobile: boolean = false;
 
     @Output() toggleEvent = new EventEmitter<boolean>();
 
@@ -16,9 +15,6 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.pushRightClass = 'push-right';
-        if (window.innerWidth <= 992) {
-            this.isMobile = true;
-        }
     }
 
     toggleCollapsed() {

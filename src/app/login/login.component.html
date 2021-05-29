@@ -8,8 +8,8 @@
 
             </div>
             <div class="col-md-5">
-                <div class="card shadow text-center pt-5 pb-5">
-                    <div class="card-body m-5">
+                <div class="card shadow text-center pt-3 pb-3">
+                    <div class="card-body m-4">
                         <form [formGroup]="form" (ngSubmit)="onSubmit()">
                             <div class="form-group">
                                 <input type="text" formControlName="username" placeholder="Username"
@@ -30,6 +30,7 @@
                                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                     Login
                                 </button>
+                                <alert-msg></alert-msg>
                             </div>
                         </form>
                     </div>
