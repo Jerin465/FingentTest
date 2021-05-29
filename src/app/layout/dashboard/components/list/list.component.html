@@ -7,16 +7,14 @@
     </div>
 </div>
 <div class="row">
-
     <ng-container *ngFor="let item of data">
         <div class="col-md-4 text-primary">
             <app-stat>
-                <div class="card-body text-primary">
+                <div class="card-body m-5 text-primary">
                     <p class="card-text">{{item.title}}</p>
                     <h5 class="card-title">{{item.count | number}}</h5>
                 </div>
             </app-stat>
         </div>
     </ng-container>
-
 </div>

@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-between">
+    <app-page-header [heading]="'Countries'" [icon]="'fa-flag'"></app-page-header>
+    <div class="pt-4">
+        <form>
+            <div class="form-row row justify-content-end">
+                <div class="col-md-6">
+                    <label class="sr-only" for="inlineFormInputGroup">Search</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text fa fa-search">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search Country">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <select id="inputState" class="form-control">
+                        <option selected>Sort By</option>
+                        <option>...</option>
+                    </select> </div>
+            </div>
+        </form>
+    </div>
+    <div class="p-3">
+        <app-pagination [pageSize]="pageSize" [totalSize]="totalSize" (pageTrigger)="pageTrigger($event)">
+        </app-pagination>
+    </div>
+</div>
+<div class="row">
+    <ng-container *ngFor="let item of paginateData">
+        <div class="col-md-4">
+            <app-stat>
+                <div class="card-body mt-n5">
+                    <div class="d-flex justify-content-start mb-3">
+                        <img [src]="item.countryInfo.flag" class="rounded float-start flag-img" alt="...">
+                        <p class="card-title p-2 text-primary lead">{{item.country}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-end ">
+                        <div class="text-start">
+                            <span class="d-block lead">Cases</span>
+                            <span class="d-block font-weight-bold">{{item.cases | number}}</span>
+                        </div>
+                        <div class="text-start">
+                            <span class="d-block lead">Deaths</span>
+                            <span class="d-block font-weight-bold">{{item.deaths | number}}</span>
+                        </div>
+                        <div class="text-start">
+                            <span class="d-block lead">Recovered</span>
+                            <span class="d-block font-weight-bold">{{item.recovered | number}}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-end pt-3">
+                        <div class="text-start">
+                            <span class="d-block lead">Test</span>
+                            <span class="d-block font-weight-bold">{{item.tests | number}}</span>
+                        </div>
+                        <div class="text-start">
+                            <span class="d-block lead">Population</span>
+                            <span class="d-block font-weight-bold">{{item.population | number}}</span>
+                        </div>
+                        <div class="text-start">
+                            <a class="card-link"><i class="fa fa-3x fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </app-stat>
+        </div>
+    </ng-container>
+</div>
