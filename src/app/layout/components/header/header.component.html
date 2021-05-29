@@ -1,21 +1,25 @@
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg shadow-sm fixed-top">
     <a class="navbar-brand" (click)="toggleCollapsed()">
-        <i *ngIf="!isMobile" aria-hidden="true" class="fa fa-bars text-muted">&nbsp;</i>covid-19</a>
+        <span class="m-3">
+            <i  aria-hidden="true" class="menu-hamburger fa fa-bars text-muted">&nbsp;&nbsp;</i>covid-19
+        </span>
+    </a>
     <button (click)="toggleSidebar()" class="navbar-toggler" type="button">
         <i aria-hidden="true" class="fa fa-bars text-muted"></i>
     </button>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown" ngbDropdown>
-                <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
-                    <i class="fa fa-user"></i> John Smith <b class="caret"></b>
-                </a>
-                <div class="dropdown-menu-right" ngbDropdownMenu>
-                    <a (click)="onLoggedout()" [routerLink]="['/login']" class="dropdown-item">
-                        <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' }}
+    <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown" ngbDropdown>
+                    <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
+                        <i class="fa fa-user"></i> John Smith <b class="caret"></b>
                     </a>
-                </div>
-            </li>
-        </ul>
+                    <div class="dropdown-menu-right" ngbDropdownMenu>
+                        <a (click)="onLoggedout()" [routerLink]="['/login']" class="dropdown-item">
+                            <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' }}
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
     </div>
 </nav>
