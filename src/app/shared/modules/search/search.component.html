@@ -6,12 +6,17 @@
                     <div class="input-group-text fa fa-search">
                     </div>
                 </div>
-                <input type="text" [formControl]="searchField" class="form-control" id="inlineFormInputGroup" placeholder="Search Country">
+                <input type="text" [formControl]="searchField" class="form-control" id="inlineFormInputGroup"
+                    placeholder="Search Country">
             </div>
         </div>
         <div class="col-md-6">
-            <select id="inputState" class="form-control" placeholder="Sort By">
-                <option selected>Sort By</option>
+            <select id="inputState" (change)="valueChange($event)" [formControl]="sortField" class="form-control">
+                <option value="" selected disabled>Sort By</option>
+                <option value="country">Country</option>
+                <option value="cases">Cases</option>
+                <option value="deaths">Deaths</option>
+                <option value="recovered">Recovered</option>
             </select>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between">
-    <app-page-header [heading]="'Countries'" [icon]="'fa-flag'"></app-page-header>
+    <app-page-header [heading]="'Countries'" [subHeading]="'Countries'" [child]="'List'" [routeLink]="'/country'" [icon]="'fa fa-flag'"></app-page-header>
     <div class="pt-4">
-        <app-search (searchEvent)="searchTrigger($event)"></app-search>
+        <app-search (searchEvent)="searchTrigger($event)" (sortEvent)="sortTrigger($event)"></app-search>
     </div>
     <div class="p-3">
         <app-pagination [pageSize]="pageSize" [totalSize]="totalSize" (pageTrigger)="pageTrigger($event)">
