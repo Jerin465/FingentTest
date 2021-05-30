@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-between">
-    <app-page-header [heading]="'Countries'" [subHeading]="'Countries'" [child]="'List'" [routeLink]="'/country'" [icon]="'fa fa-flag'"></app-page-header>
+    <app-page-header [heading]="'Countries'" [subHeading]="'Countries'" [child]="'List'" [routeLink]="'/country'"
+        [icon]="'fa fa-flag'"></app-page-header>
     <div class="pt-4">
         <app-search (searchEvent)="searchTrigger($event)" (sortEvent)="sortTrigger($event)"></app-search>
     </div>
@@ -8,7 +9,8 @@
         </app-pagination>
     </div>
 </div>
-<div class="row">
+
+<div class="row" *ngIf="paginateData?.length; else elseTemplate">
     <ng-container *ngFor="let item of paginateData">
         <div class="col-md-4">
             <app-stat>
@@ -50,4 +52,8 @@
             </app-stat>
         </div>
     </ng-container>
+
 </div>
+<ng-template #elseTemplate>
+    <app-loader></app-loader>
+</ng-template>

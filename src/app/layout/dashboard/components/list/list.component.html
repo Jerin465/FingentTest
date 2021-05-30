@@ -6,13 +6,14 @@
         <hr />
     </div>
 </div>
+
 <div class="row">
     <ng-container *ngFor="let item of data">
         <div class="col-md-4 text-primary">
             <app-stat>
-                <div class="card-body m-5 text-primary">
-                    <p class="card-text">{{item.title}}</p>
-                    <h5 class="card-title">{{item.count | number}}</h5>
+                <div class="card-body m-4 text-primary">
+                    <p class="card-text lead">{{item.title}}</p>
+                    <h3 class="card-title ">{{item.count | number}}</h3>
                 </div>
             </app-stat>
         </div>

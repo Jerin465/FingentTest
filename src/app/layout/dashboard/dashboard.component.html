@@ -3,8 +3,16 @@
         <app-page-header [heading]="'Dashboard'" [subHeading]="'Dashboard'" [routeLink]="'/dashboard'"
             [icon]="'fa fa-fw fa-th'"></app-page-header>
     </div>
-    <ng-container *ngFor="let item of StatisticsData">
-        <app-list [title]="item.title" [data]="item.data"></app-list>
-    </ng-container>
 
+    <ng-container *ngIf="StatisticsData?.length; else elseTemplate">
+        <ng-container *ngFor="let item of StatisticsData">
+            <app-list [title]="item.title" [data]="item.data"></app-list>
+        </ng-container>
+    </ng-container>
 </div>
+
+<ng-template #elseTemplate>
+    <div class="row">
+        <app-loader></app-loader>
+    </div>
+</ng-template>
