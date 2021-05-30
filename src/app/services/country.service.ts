@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Statistics } from '../models';
-import { catchError, map } from 'rxjs/operators';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { Country } from '../models';
 
 const baseUrl = `${environment.apiUrl}/v2/countries`;
 
@@ -11,28 +10,25 @@ const baseUrl = `${environment.apiUrl}/v2/countries`;
     providedIn: 'root'
 })
 export class CountryService {
-    private countryList = new BehaviorSubject<any[]>([]);
+    private countryList = new BehaviorSubject<Country[]>([]);
     country = this.countryList.asObservable();
-
-    private countryObj = new BehaviorSubject<any>([]);
-    editCountry = this.countryObj.asObservable();
 
     constructor(private http: HttpClient) {}
 
     getAllCoutries() {
         this.http.get(baseUrl).subscribe(
-            (data: any) => {
+            (data: Country[]) => {
                 this.countryList.next(data);
             },
             (error) => console.log('Error in Loading data.')
         );
     }
 
-    updateCountry(editdata: any) {
-        var countryList: any;
-        this.country.subscribe((data: any) => {
+    updateCountry(editdata: Country) {
+        var countryList: Country[];
+        this.country.subscribe((data: Country[]) => {
             countryList = data;
-            countryList.forEach((item: any, i: any) => {
+            countryList.forEach((item: Country, i: number) => {
                 if (editdata.countryInfo._id == item.countryInfo._id) {
                     countryList[i] = editdata;
                 }
@@ -40,5 +36,4 @@ export class CountryService {
         });
         this.countryList.next(countryList);
     }
-
 }

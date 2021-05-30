@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertMsgService } from '../shared/services';
@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
         private router: Router,
         private alertService: AlertMsgService,
         private authService: AuthService
@@ -30,6 +29,9 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
+    }
+    ngAfterViewInit(): void {
+        this.alertService.info('Username & Password is fingent');
     }
 
     get f() {

@@ -5,7 +5,7 @@
         <app-search (searchEvent)="searchTrigger($event)" (sortEvent)="sortTrigger($event)"></app-search>
     </div>
     <div class="p-3">
-        <app-pagination [pageSize]="pageSize" [totalSize]="totalSize" (pageTrigger)="pageTrigger($event)">
+        <app-pagination [page]="page" [pageSize]="pageSize" [totalSize]="totalSize" (pageTrigger)="pageTrigger($event)">
         </app-pagination>
     </div>
 </div>

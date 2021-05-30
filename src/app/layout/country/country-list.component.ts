@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from './../../services/country.service';
+import { Country } from "../../models";
 
 @Component({
     templateUrl: './country-list.component.html',
@@ -8,9 +9,9 @@ import { CountryService } from './../../services/country.service';
 export class CountryListComponent implements OnInit {
     public pageSize: number = 30;
     public totalSize: number;
-    public countryAllData: any;
-    public paginateData: any;
     public page: number;
+    public countryAllData: Array<Country> = [];
+    public paginateData: Array<Country> = [];
 
     constructor(public countryService: CountryService) {}
 
@@ -26,14 +27,14 @@ export class CountryListComponent implements OnInit {
             this.pageTrigger(1);
         });
     }
-    pageTrigger($event) {
+    pageTrigger($event:number) {
         this.page = $event;
         this.paginateData = this.countryAllData.slice(
             (this.page - 1) * this.pageSize,
             (this.page - 1) * this.pageSize + this.pageSize
         );
     }
-    searchTrigger($event) {
+    searchTrigger($event:String) {
         this.page = 1;
         this.paginateData = this.countryAllData.filter((item: any) => {
             return item.country

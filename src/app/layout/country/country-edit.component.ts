@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CountryService } from './../../services/country.service';
 import { AlertMsgService } from '../../shared/services';
+import { Country } from "../../models";
+
 
 @Component({
     templateUrl: './country-edit.component.html'
@@ -11,8 +13,8 @@ import { AlertMsgService } from '../../shared/services';
 export class CountryEditComponent implements OnInit {
     editData: any;
     form: FormGroup;
-    loading = false;
-    submitted = false;
+    loading:boolean = false;
+    submitted:boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -40,7 +42,7 @@ export class CountryEditComponent implements OnInit {
 
     fetchCountry() {
         const id: number = this.route.snapshot.params['id'];
-        this.countryService.country.subscribe((data: any) => {
+        this.countryService.country.subscribe((data: Country[]) => {
             this.editData = data.find((item) => item.countryInfo._id == id);
             this.form.patchValue(this.editData);
         });

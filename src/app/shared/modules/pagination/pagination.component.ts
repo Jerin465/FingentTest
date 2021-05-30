@@ -8,10 +8,9 @@ import { Component, EventEmitter, Output,Input } from '@angular/core';
 export class PaginationComponent {
     math = Math;
     @Output() pageTrigger = new EventEmitter<number>();
-
     @Input() pageSize: number;
     @Input() totalSize: number;
-    page: number;
+    @Input() page: number;
 
     constructor() {
         this.page = 1;

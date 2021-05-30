@@ -8,53 +8,10 @@
             <i class="fa fa-fw fa-flag"></i>&nbsp;
             <span>{{ 'Countries' }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/tables']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;
-            <span>{{ 'Tables' }}</span>
-        </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/forms']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;
-            <span>{{ 'Forms' }}</span>
-        </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/bs-element']" class="list-group-item">
-            <i class="fa fa-fw fa-desktop"></i>&nbsp;
-            <span>{{ 'Bootstrap Element' }}</span>
-        </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/grid']" class="list-group-item">
-            <i class="fa fa-fw fa-wrench"></i>&nbsp;
-            <span>{{ 'Bootstrap Grid' }}</span>
-        </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/components']" class="list-group-item">
-            <i class="fa fa-th-list"></i>&nbsp;
-            <span>{{ 'Component' }}</span>
-        </a>
-
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/blank-page']" class="list-group-item">
-            <i class="fa fa-file-o"></i>&nbsp;
-            <span>{{ 'Blank Page' }}</span>
-        </a>
-        <a (click)="onLoggedout()" [routerLink]="['/login']" class="text-white">
-           <div class="fixed-bottom m-2 mb-5">
-            <p class="fa fa-2x fa-power-off"></p>&nbsp;
+        <a (click)="onLoggedout()" [routerLinkActive]="['router-link-active']" [routerLink]="['/login']" class="mt-10 font-weight-bold list-group-item">
+            <i class="fa fa-power-off font-weight-bold"></i>&nbsp;
             <span>{{ 'Log Out' }}</span>
-           </div>
         </a>
-        <div class="header-fields">
-            <div class="nested-menu">
-                <a (click)="addExpandClass('profile')" class="list-group-item">
-                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
-                </a>
-                <li [class.expand]="showMenu === 'profile'" class="nested">
-                    <ul class="submenu">
-                        <li>
-                            <a (click)="onLoggedout()" [routerLink]="['/login']">
-                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' }}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-        </div>
     </div>
     <div (click)="toggleCollapsed()" [ngClass]="{ collapsed: collapsed }" class="toggle-button">
         <i class="fa fa-fw fa-angle-double-{{ collapsed ? 'right' : 'left' }}"></i>&nbsp;

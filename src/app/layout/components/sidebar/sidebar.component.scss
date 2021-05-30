@@ -1,4 +1,5 @@
 $topnav-background-color: #0c6ad6;
+
 .sidebar {
     border-radius: 0;
     position: fixed;
@@ -21,6 +22,7 @@ $topnav-background-color: #0c6ad6;
     -ms-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
+
     // border-top: 1px solid rgba(255,255,255,0.3);
     .list-group {
         a.list-group-item {
@@ -43,14 +45,14 @@ $topnav-background-color: #0c6ad6;
         a.router-link-active {
             background: darken($topnav-background-color, 5%);
             color: #fff;
-            border-left:5px solid rgb(98, 218, 255);
+            border-left: 5px solid rgb(98, 218, 255);
 
         }
 
         .header-fields {
             padding-top: 10px;
 
-            > .list-group-item:first-child {
+            >.list-group-item:first-child {
                 border-top: 1px solid rgba(255, 255, 255, 0.2);
             }
         }
@@ -94,7 +96,7 @@ $topnav-background-color: #0c6ad6;
         }
 
         .panel-collapse {
-            border-radious: 0;
+            border-radius: 0;
             border: none;
 
             .panel-body {
@@ -218,3 +220,8 @@ $topnav-background-color: #0c6ad6;
     }
 }
 
+@media screen and (min-width: 992px) {
+    .mt-10 {
+        margin-top: 32em;
+    }
+}
