@@ -1,0 +1,17 @@
+    <div class="form-row row justify-content-end">
+        <div class="col-md-6">
+            <label class="sr-only" for="inlineFormInputGroup">Search</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text fa fa-search">
+                    </div>
+                </div>
+                <input type="text" [formControl]="searchField" class="form-control" id="inlineFormInputGroup" placeholder="Search Country">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <select id="inputState" class="form-control" placeholder="Sort By">
+                <option selected>Sort By</option>
+            </select>
+        </div>
+    </div>

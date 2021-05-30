@@ -28,37 +28,16 @@
             <i class="fa fa-th-list"></i>&nbsp;
             <span>{{ 'Component' }}</span>
         </a>
-        <div class="nested-menu">
-            <a (click)="addExpandClass('pages')" class="list-group-item">
-                <i class="fa fa-plus"></i>&nbsp;
-                <span>{{ 'Menu' }}</span>
-            </a>
-            <li [class.expand]="showMenu === 'pages'" class="nested">
-                <ul class="submenu">
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Submenu' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Submenu' }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Submenu' }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
+
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/blank-page']" class="list-group-item">
             <i class="fa fa-file-o"></i>&nbsp;
             <span>{{ 'Blank Page' }}</span>
+        </a>
+        <a (click)="onLoggedout()" [routerLink]="['/login']" class="list-group-item">
+           <div class="fixed-bottom m-2 mb-5">
+            <p class="fa fa-2x fa-power-off"></p>&nbsp;
+            <span>{{ 'Log Out' }}</span>
+           </div>
         </a>
         <div class="header-fields">
             <div class="nested-menu">

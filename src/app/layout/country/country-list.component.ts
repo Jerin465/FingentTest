@@ -4,7 +4,6 @@ import { CountryService } from './../../services/country.service';
 @Component({
     templateUrl: './country-list.component.html',
     styleUrls: ['./country.scss']
-
 })
 export class CountryListComponent implements OnInit {
     public pageSize: number = 30;
@@ -16,16 +15,15 @@ export class CountryListComponent implements OnInit {
     constructor(public countryService: CountryService) {}
 
     ngOnInit(): void {
+        this.countryService.getAllCoutries();
         this.getCountryList();
     }
 
     getCountryList() {
-        this.countryService.getAllCoutries().subscribe((result: any) => {
-            if (result) {
-                this.countryAllData = result;
-                this.totalSize = result.length;
-                this.pageTrigger(1);
-            }
+        this.countryService.country.subscribe((data) => {
+            this.countryAllData = data;
+            this.totalSize = data.length;
+            this.pageTrigger(1);
         });
     }
     pageTrigger($event) {
@@ -35,6 +33,12 @@ export class CountryListComponent implements OnInit {
             (this.page - 1) * this.pageSize + this.pageSize
         );
         console.log(this.paginateData);
-
+    }
+    searchTrigger($event) {
+        console.log($event);
+        this.countryAllData = this.countryAllData.filter((item: any) => {
+            return item.country.toLowerCase().includes($event.toLowerCase());
+        });
+        this.pageTrigger(1);
     }
 }

@@ -1,25 +1,7 @@
 <div class="d-flex justify-content-between">
     <app-page-header [heading]="'Countries'" [icon]="'fa-flag'"></app-page-header>
     <div class="pt-4">
-        <form>
-            <div class="form-row row justify-content-end">
-                <div class="col-md-6">
-                    <label class="sr-only" for="inlineFormInputGroup">Search</label>
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text fa fa-search">
-                            </div>
-                        </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search Country">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <select id="inputState" class="form-control">
-                        <option selected>Sort By</option>
-                        <option>...</option>
-                    </select> </div>
-            </div>
-        </form>
+        <app-search (searchEvent)="searchTrigger($event)"></app-search>
     </div>
     <div class="p-3">
         <app-pagination [pageSize]="pageSize" [totalSize]="totalSize" (pageTrigger)="pageTrigger($event)">
@@ -56,10 +38,11 @@
                         </div>
                         <div class="text-start">
                             <span class="d-block lead">Population</span>
-                            <span class="d-block font-weight-bold">{{item.population | number}}</span>
+                            <span class="d-block font-weight-bold">{{item.population | thousandSuffix}}</span>
                         </div>
                         <div class="text-start">
-                            <a class="card-link"><i class="fa fa-3x fa-pencil-square-o" aria-hidden="true"></i>
+                            <a class="card-link" routerLink="edit/{{item.countryInfo._id}}"><i
+                                    class="fa fa-3x fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
